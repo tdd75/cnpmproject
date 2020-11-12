@@ -165,7 +165,7 @@ public class HomePagePanel extends javax.swing.JPanel {
         soTienDaNhanLb.setForeground(new java.awt.Color(255, 255, 255));
         soTienDaNhanLb.setText("1000");
 
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/iconfinder_business_economic_finance_interprise_company_get_money_2570316.png"))); // NOI18N
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/getmoney.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);

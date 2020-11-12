@@ -303,7 +303,7 @@
         <Component class="javax.swing.JLabel" name="jLabel7">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/Icons/iconfinder_business_economic_finance_interprise_company_get_money_2570316.png"/>
+              <Image iconType="3" name="/Icons/getmoney.png"/>
             </Property>
           </Properties>
         </Component>
