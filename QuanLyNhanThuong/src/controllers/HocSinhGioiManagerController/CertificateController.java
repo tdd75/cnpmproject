@@ -14,7 +14,7 @@ import javax.swing.JOptionPane;
 import services.MysqlConnection;
 /**
  *
- * @author Minh
+ * @author Hoàng
  */
 public class CertificateController {
     

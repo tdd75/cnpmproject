@@ -9,7 +9,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author Minh
+ * @author Thoại
  */
 public class DeleteJFrame extends javax.swing.JFrame {
 

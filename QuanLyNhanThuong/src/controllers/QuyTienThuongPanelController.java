@@ -9,7 +9,6 @@ import java.util.List;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import services.QuyTienThuongService;
-import Bean.QuyTienThuongBean;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Font;

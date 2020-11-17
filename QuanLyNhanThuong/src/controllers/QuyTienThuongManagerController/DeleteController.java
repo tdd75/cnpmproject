@@ -7,7 +7,7 @@ package controllers.QuyTienThuongManagerController;
 
 /**
  *
- * @author Minh
+ * @author Khương
  */
 public class DeleteController {
     

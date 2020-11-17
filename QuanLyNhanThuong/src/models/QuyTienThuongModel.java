@@ -9,7 +9,7 @@ import java.util.Date;
 
 /**
  *
- * @author admin
+ * @author Hoàng
  */
 public class QuyTienThuongModel {
     

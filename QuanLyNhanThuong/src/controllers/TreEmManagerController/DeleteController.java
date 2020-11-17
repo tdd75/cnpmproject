@@ -1,6 +1,6 @@
 package controllers.TreEmManagerController;
 
-import Bean.TreEmBean;
+
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -19,7 +19,7 @@ import services.TreEmService;
 
 /**
  *
- * @author Hai
+ * @author Duy
  */
 public class DeleteController {
     

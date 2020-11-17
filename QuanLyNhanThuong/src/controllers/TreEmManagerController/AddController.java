@@ -1,7 +1,6 @@
 package controllers.TreEmManagerController;
 
-import Bean.TreEmBean;
-import Bean.HocSinhGioiBean;
+
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -18,14 +17,14 @@ import services.TreEmService;
 
 /**
  *
- * @author Minh
+ * @author Duy
  */
 public class AddController {
     
     // hàm thêm mới trẻ em được nhận thưởng với đầu vào là đối tượng TreEmBean
     // cập nhật các bảng liên quan
-    public boolean addTreEm(TreEmBean treEmBean) throws SQLException, ClassNotFoundException{
-        TreEmModel treEm = treEmBean.getTreEmModel();
+    public boolean addTreEm(TreEmModel treEmModel) throws SQLException, ClassNotFoundException{
+        TreEmModel treEm = treEmModel;
         /*ChungMinhThuModel chungMinhThu = nhanKhauBean.getChungMinhThuModel();
         Connection connection = MysqlConnection.getMysqlConnection();
         // 1 - 19

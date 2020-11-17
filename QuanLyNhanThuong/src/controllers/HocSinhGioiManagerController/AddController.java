@@ -1,6 +1,6 @@
 package controllers.HocSinhGioiManagerController;
 
-import Bean.HocSinhGioiBean;
+
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -12,14 +12,14 @@ import services.MysqlConnection;
 
 /**
  *
- * @author Minh
+ * @author Thoại
  */
 
 public class AddController {
     
     // hàm thêm học sinh giỏi vào bảng HSG trong CSDL, đồng thời thêm vào bảng quỹ tiền thưởng, cập nhật bảng hộ gia đình
-    public boolean addHocSinhGioi(HocSinhGioiBean hocSinhGioiBean) throws SQLException, ClassNotFoundException{
-        HocSinhGioiModel hocSinhGioi = hocSinhGioiBean.getHocSinhGioiModel();
+    public boolean addHocSinhGioi(HocSinhGioiModel hocSinhGioiModel) throws SQLException, ClassNotFoundException{
+        HocSinhGioiModel hocSinhGioi = hocSinhGioiModel;
         /*ChungMinhThuModel chungMinhThu = nhanKhauBean.getChungMinhThuModel();
         Connection connection = MysqlConnection.getMysqlConnection();
         // 1 - 19

@@ -1,6 +1,6 @@
 package views.HocSinhGioiManagerFrame;
 
-import Bean.HocSinhGioiBean;
+
 import controllers.HocSinhGioiManagerController.AddController;
 import controllers.HocSinhGioiPanelController;
 import java.awt.event.WindowAdapter;
@@ -11,7 +11,7 @@ import models.HocSinhGioiModel;
 
 /**
  *
- * @author Minh
+ * @author Thoại
  */
 public class AddJFrame extends javax.swing.JFrame {
 
@@ -20,7 +20,7 @@ public class AddJFrame extends javax.swing.JFrame {
      */
     private HocSinhGioiPanelController parentController;
     private JFrame parentJFrame;
-    private HocSinhGioiBean hocSinhGioiBean;
+    private HocSinhGioiModel hocSinhGioiModel;
     private AddController controller;
 
 
@@ -35,7 +35,7 @@ public class AddJFrame extends javax.swing.JFrame {
         this.parentController = parentController;
         this.parentJFrame = parentJFrame;
         this.parentJFrame.setEnabled(false);
-        this.hocSinhGioiBean = new HocSinhGioiBean();
+        this.hocSinhGioiModel = new HocSinhGioiModel();
         initComponents();
         setTitle("Thêm mới học sinh giỏi");
         setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
@@ -68,7 +68,7 @@ public class AddJFrame extends javax.swing.JFrame {
         };
         this.parentJFrame = parentJFrame;
         this.parentJFrame.setEnabled(false);
-        this.hocSinhGioiBean = new HocSinhGioiBean();
+        this.hocSinhGioiModel = new HocSinhGioiModel();
         initComponents();
         setTitle("Thêm mới học sinh giỏi");
         setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);

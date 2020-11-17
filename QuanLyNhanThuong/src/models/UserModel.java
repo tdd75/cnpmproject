@@ -2,9 +2,9 @@ package models;
 
 /**
  *
- * @author Hai
+ * @author Minh
  */
-public class UserMoldel {
+public class UserModel {
     private int ID;
     private String userName;
     private String passwd;

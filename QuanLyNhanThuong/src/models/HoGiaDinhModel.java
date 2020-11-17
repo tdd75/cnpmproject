@@ -7,7 +7,7 @@ package models;
 
 /**
  *
- * @author Minh
+ * @author Hoàng
  */
 public class HoGiaDinhModel {
     

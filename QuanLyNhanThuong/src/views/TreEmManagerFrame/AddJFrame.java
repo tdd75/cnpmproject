@@ -1,23 +1,24 @@
 package views.TreEmManagerFrame;
 
-import Bean.TreEmBean;
+
 import controllers.TreEmManagerController.AddController;
 import controllers.TreEmPanelController;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import models.TreEmModel;
 
 /**
  *
- * @author Minh
+ * @author Duy
  */
 public class AddJFrame extends javax.swing.JFrame {
 
     private TreEmPanelController parentController;
     private JFrame parentJFrame;
     private AddController controller = new AddController();
-    private TreEmBean treEmBean = new TreEmBean();
+    private TreEmModel treEmModel = new TreEmModel();
     
     /**
      * Creates new form ThemMoiHoKhau
@@ -28,7 +29,7 @@ public class AddJFrame extends javax.swing.JFrame {
         this.parentController = parentController;
         this.parentJFrame = parentJFrame;
         this.parentJFrame.setEnabled(false);
-        this.treEmBean = new TreEmBean();
+        this.treEmModel = new TreEmModel();
         initComponents();
         setTitle("Thêm mới trẻ em");
         setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);

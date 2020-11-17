@@ -3,7 +3,7 @@ package models;
 import java.util.Date;
 /**
  *
- * @author Minh
+ * @author Hoàng
  */
 public class HocSinhGioiModel {
 

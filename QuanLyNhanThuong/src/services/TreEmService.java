@@ -1,6 +1,6 @@
 package services;
 
-import Bean.TreEmBean;
+
 import controllers.LoginController;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -18,7 +18,7 @@ import models.HocSinhGioiModel;
 
 /**
  *
- * @author Minh
+ * @author Duy
  */
 public class TreEmService {
     

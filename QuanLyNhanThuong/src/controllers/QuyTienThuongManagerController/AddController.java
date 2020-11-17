@@ -5,18 +5,18 @@
  */
 package controllers.QuyTienThuongManagerController;
 
-import Bean.QuyTienThuongBean;
+
 import models.QuyTienThuongModel;
 
 /**
  *
- * @author Minh
+ * @author Khương
  */
 public class AddController {
     
     // hàm thêm người chi tiền vào bảng quỹ tiền thưởng với thông tin nhận được
-    public boolean addQuyTienThuong(QuyTienThuongBean quyTienThuongBean) {
-        QuyTienThuongModel quyTienThuong = quyTienThuongBean.getQuyTienThuongModel();
+    public boolean addQuyTienThuong(QuyTienThuongModel quyTienThuongModel) {
+        QuyTienThuongModel quyTienThuong = quyTienThuongModel;
         //code here
         return true;
     }

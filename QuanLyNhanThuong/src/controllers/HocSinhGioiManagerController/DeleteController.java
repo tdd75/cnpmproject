@@ -5,12 +5,11 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
-
 import services.MysqlConnection;
 
 /**
  *
- * @author Minh
+ * @author Thoại
  */
 public class DeleteController {
     

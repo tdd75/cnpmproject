@@ -8,7 +8,7 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 /**
  *
- * @author Minh
+ * @author Hoàng
  */
 public class CertificateJFrame extends javax.swing.JFrame {
 

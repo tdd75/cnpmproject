@@ -5,17 +5,18 @@
  */
 package views.QuyTienThuongManagerFrame;
 
-import Bean.QuyTienThuongBean;
+
 import controllers.QuyTienThuongManagerController.AddController;
 import controllers.QuyTienThuongPanelController;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import models.QuyTienThuongModel;
 
 /**
  *
- * @author Minh
+ * @author Khương
  */
 public class AddJFrame extends javax.swing.JFrame {
 
@@ -24,14 +25,14 @@ public class AddJFrame extends javax.swing.JFrame {
      */
     private QuyTienThuongPanelController parentController;
     private JFrame parentJFrame;
-    private QuyTienThuongBean quyTienThuongBean;
+    private QuyTienThuongModel quyTienThuongModel;
     private AddController controller;
     
     public AddJFrame(QuyTienThuongPanelController parentController, JFrame parentJFrame) {
         this.parentController = parentController;
         this.parentJFrame = parentJFrame;
         this.parentJFrame.setEnabled(false);
-        this.quyTienThuongBean = new QuyTienThuongBean();
+        this.quyTienThuongModel = new QuyTienThuongModel();
         initComponents();
         setTitle("Thêm nhà tài trợ");
         setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
@@ -62,7 +63,7 @@ public class AddJFrame extends javax.swing.JFrame {
         };
         this.parentJFrame = parentJFrame;
         this.parentJFrame.setEnabled(false);
-        this.quyTienThuongBean = new QuyTienThuongBean();
+        this.quyTienThuongModel = new QuyTienThuongModel();
         initComponents();
         setTitle("Thêm nhà tài trợ");
         setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);

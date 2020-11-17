@@ -1,6 +1,6 @@
 package views.TreEmManagerFrame;
 
-import Bean.TreEmBean;
+
 import controllers.TreEmManagerController.DeleteController;
 import controllers.TreEmPanelController;
 import java.awt.event.WindowAdapter;
@@ -10,7 +10,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author User
+ * @author Duy
  */
 public class DeleteJFrame extends javax.swing.JFrame {
     

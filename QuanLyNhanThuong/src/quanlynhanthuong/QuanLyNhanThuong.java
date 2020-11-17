@@ -7,7 +7,7 @@ import views.MainFrame;
 
 /**
  *
- * @author Hai
+ * @author Minh
  */
 public class QuanLyNhanThuong {
 

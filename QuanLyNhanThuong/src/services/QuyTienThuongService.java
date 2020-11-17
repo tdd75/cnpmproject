@@ -5,7 +5,7 @@
  */
 package services;
 
-import Bean.QuyTienThuongBean;
+
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -13,7 +13,7 @@ import models.QuyTienThuongModel;
 
 /**
  *
- * @author Minh
+ * @author Khương
  */
 public class QuyTienThuongService {
     

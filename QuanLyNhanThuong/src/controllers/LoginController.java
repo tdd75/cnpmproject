@@ -5,7 +5,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import models.UserMoldel;
+import models.UserModel;
 import services.MysqlConnection;
 
 /**
@@ -14,7 +14,7 @@ import services.MysqlConnection;
  */
 public class LoginController {
     
-    public static UserMoldel currentUser = new UserMoldel();
+    public static UserModel currentUser = new UserModel();
     
     //không cần sửa
     public boolean login(String userName, String passwod) throws SQLException, ClassNotFoundException{
