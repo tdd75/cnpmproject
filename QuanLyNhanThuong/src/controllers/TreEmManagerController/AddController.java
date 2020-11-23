@@ -1,10 +1,13 @@
 package controllers.TreEmManagerController;
 
-
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.EventObject;
 import java.util.List;
 import javax.swing.JPanel;
@@ -13,6 +16,7 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import models.HocSinhGioiModel;
 import models.TreEmModel;
+import services.MysqlConnection;
 import services.TreEmService;
 
 /**
@@ -20,88 +24,52 @@ import services.TreEmService;
  * @author Duy
  */
 public class AddController {
-    
+
     // hàm thêm mới trẻ em được nhận thưởng với đầu vào là đối tượng TreEmBean
     // cập nhật các bảng liên quan
-    public boolean addTreEm(TreEmModel treEmModel) throws SQLException, ClassNotFoundException{
+    public boolean addTreEm(TreEmModel treEmModel) throws SQLException, ClassNotFoundException {
         TreEmModel treEm = treEmModel;
-        /*ChungMinhThuModel chungMinhThu = nhanKhauBean.getChungMinhThuModel();
+//        ChungMinhThuModel chungMinhThu = nhanKhauBean.getChungMinhThuModel();
         Connection connection = MysqlConnection.getMysqlConnection();
         // 1 - 19
-        String query = "INSERT INTO nhan_khau (hoTen, bietDanh, namSinh, gioiTinh, noiSinh, nguyenQuan, danToc, tonGiao, quocTich, soHoChieu, noiThuongTru, diaChiHienNay, trinhDoHocVan, TrinhDoChuyenMon, bietTiengDanToc, trinhDoNgoaiNgu, ngheNghiep, noiLamViec, idNguoiTao, ngayTao)" 
-                        + " values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        String query = "INSERT INTO tre_em (id, hoTen, tuoi, id_hoGiaDinh, phanThuong, giaTri, id_nhanThuong, ngayThuong)"
+                + " values (?, ?, ?, ?, ?, ?, ?, ?)";
         PreparedStatement preparedStatement = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
-        preparedStatement.setString(1, nhanKhau.getHoTen());
-        preparedStatement.setString(2, nhanKhau.getBietDanh());
-        java.sql.Date namSinh = new java.sql.Date(nhanKhau.getNamSinh().getTime());
-        preparedStatement.setDate(3, namSinh);
-        preparedStatement.setString(4, nhanKhau.getGioiTinh());
-        preparedStatement.setString(5, nhanKhau.getNoiSinh());
-        preparedStatement.setString(6, nhanKhau.getNguyenQuan());
-        preparedStatement.setString(7, nhanKhau.getDanToc());
-        preparedStatement.setString(8, nhanKhau.getTonGiao());
-        preparedStatement.setString(9, nhanKhau.getQuocTich());
-        preparedStatement.setString(10, nhanKhau.getSoHoChieu());
-        preparedStatement.setString(11, nhanKhau.getNoiThuongTru());
-        preparedStatement.setString(12, nhanKhau.getDiaChiHienNay());
-        preparedStatement.setString(13, nhanKhau.getTrinhDoHocVan());
-        preparedStatement.setString(14, nhanKhau.getTrinhDoChuyenMon());
-        preparedStatement.setString(15, nhanKhau.getBietTiengDanToc());
-        preparedStatement.setString(16, nhanKhau.getTrinhDoNgoaiNgu());
-        preparedStatement.setString(17, nhanKhau.getNgheNghiep());
-        preparedStatement.setString(18, nhanKhau.getNoiLamViec());
-        preparedStatement.setInt(19, nhanKhau.getIdNguoiTao());
-        java.sql.Date createDate = new java.sql.Date(quanlynhankhau.QuanLyNhanKhau.calendar.getTime().getTime());
-        preparedStatement.setDate(20, createDate);
-        
+        preparedStatement.setInt(1, treEm.getID());
+        preparedStatement.setString(2, treEm.getHoTen());
+        preparedStatement.setInt(3, treEm.getTuoi());
+        preparedStatement.setInt(4, treEm.getID_HoGiaDinh());
+        preparedStatement.setString(5, treEm.getPhanThuong());
+        preparedStatement.setInt(6, treEm.getGiaTri());
+        preparedStatement.setInt(7, treEm.getID_NhanThuong());
+        java.sql.Date ngayThuong = new java.sql.Date(treEm.getNgayThuong().getTime());
+        preparedStatement.setDate(8, ngayThuong);
         preparedStatement.executeUpdate();
+        
         ResultSet rs = preparedStatement.getGeneratedKeys();
         if (rs.next()) {
-            int genID = rs.getInt(1);
-            String sql = "INSERT INTO chung_minh_thu(idNhanKhau, soCMT)" 
-                        + " values (?, ?)";
-            PreparedStatement prst = connection.prepareStatement(sql);
-            prst.setInt(1, genID);
-            prst.setString(2, chungMinhThu.getSoCMT());
+            int id_hoGiaDinh = rs.getInt(4);
+            int giaTri = rs.getInt(6);
+            String sql_ho_gia_dinh = "UPDATE ho_gia_dinh"
+                    + " SET soTien = soTien + "
+                    + giaTri
+                    + " WHERE id = "
+                    + id_hoGiaDinh;
+            PreparedStatement prst = connection.prepareStatement(sql_ho_gia_dinh);
             prst.execute();
-            nhanKhauBean.getListTieuSuModels().forEach(tieuSu -> {
-                try {
-                    String sql_tieu_su = "INSERT INTO tieu_su(idNhanKhau, tuNgay, denNgay, diaChi, ngheNghiep, noiLamViec)" 
-                        + " values (?, ?, ?, ?, ?, ?)";
-                    PreparedStatement preStatement = connection.prepareStatement(sql_tieu_su);
-                    preStatement.setInt(1, genID);
-                    Date tuNgay = new Date(tieuSu.getTuNgay().getTime());
-                    preStatement.setDate(2, tuNgay);
-                    preStatement.setDate(3, new Date(tieuSu.getDenNgay().getTime()));
-                    preStatement.setString(4, tieuSu.getDiaChi());
-                    preStatement.setString(5, tieuSu.getNgheNghiep());
-                    preStatement.setString(6, tieuSu.getNoiLamViec());
-                    preStatement.execute();
-                    preStatement.close();
-                } catch (Exception e) {
-                    System.out.println(e);
-                }
-            });
-            nhanKhauBean.getListGiaDinhModels().forEach(giaDinh -> {
-                try {
-                    String sql_tieu_su = "INSERT INTO gia_dinh(idNhanKhau, hoTen, namSinh, gioiTinh, quanHeVoiNhanKhau, ngheNghiep, diaChiHienTai)" 
-                        + " values (?, ?, ?, ?, ?, ?, ?)";
-                    PreparedStatement preStatement = connection.prepareStatement(sql_tieu_su);
-                    preStatement.setInt(1, genID);
-                    preStatement.setString(2, giaDinh.getHoTen());
-                    preStatement.setDate(3, new Date(giaDinh.getNamSinh().getTime()));
-                    preStatement.setString(4, giaDinh.getGioiTinh());
-                    preStatement.setString(5, giaDinh.getQuanHeVoiNhanKhau());
-                    preStatement.setString(6, giaDinh.getNgheNghiep());
-                    preStatement.setString(7, giaDinh.getDiaChiHienTai());
-                    preStatement.execute();
-                    preStatement.close();
-                } catch (Exception e) {
-                    System.out.println("controllers.NhanKhauManagerController.AddNewController.addNewPeople()");
-                }
-            });
-        }*/
-        //connection.close();
+
+            int id_nhanThuong = rs.getInt(7);
+            String sql_quy_tien_thuong = "INSERT INTO quy_tien_thuong(id, hoTen, soTien, ngayThang)"
+                    + " values (?, ?, ?, ?)";
+            PreparedStatement preStatement = connection.prepareStatement(sql_quy_tien_thuong);
+            preStatement.setInt(1, id_nhanThuong);
+            preStatement.setString(2, treEm.getHoTen());
+            preStatement.setInt(3, -giaTri);
+            preStatement.setDate(4, ngayThuong);
+            preStatement.execute();
+            preStatement.close();            
+        }
+        connection.close();
         return true;
     }
 }

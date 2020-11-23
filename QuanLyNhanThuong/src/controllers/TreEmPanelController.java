@@ -6,9 +6,12 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.EventObject;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -35,7 +38,7 @@ public class TreEmPanelController {
     private final String COLUMNS[] = {"ID", "Họ tên", "Tuổi", "Phần thưởng", "Giá trị", "Mã nhận thưởng", "Thời gian"}; 
     private JFrame parentJFrame;
 
-    public TreEmPanelController(JPanel jpnView, JTextField jtfSearch) {
+    public TreEmPanelController(JPanel jpnView, JTextField jtfSearch) throws SQLException {
         this.jpnView = jpnView;
         this.jtfSearch = jtfSearch;
         classTableModel = new ClassTableModel();
@@ -54,21 +57,33 @@ public class TreEmPanelController {
             @Override
             public void insertUpdate(DocumentEvent e) {
                 String key = jtfSearch.getText();
-                listTreEm = treEmService.search(key.trim());
+                try {
+                    listTreEm = treEmService.search(key.trim());
+                } catch (SQLException ex) {
+                    Logger.getLogger(TreEmPanelController.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 setDataTable();
             }
 
             @Override
             public void removeUpdate(DocumentEvent e) {
                 String key = jtfSearch.getText();
-                listTreEm = treEmService.search(key.trim());
+                try {
+                    listTreEm = treEmService.search(key.trim());
+                } catch (SQLException ex) {
+                    Logger.getLogger(TreEmPanelController.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 setDataTable();
             }
 
             @Override
             public void changedUpdate(DocumentEvent e) {
                 String key = jtfSearch.getText();
-                listTreEm = treEmService.search(key.trim());
+                try {
+                    listTreEm = treEmService.search(key.trim());
+                } catch (SQLException ex) {
+                    Logger.getLogger(TreEmPanelController.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 setDataTable();
             }
         });
@@ -127,7 +142,7 @@ public class TreEmPanelController {
         this.parentJFrame = parentJFrame;
     }
     
-    public void refreshData() {
+    public void refreshData() throws SQLException {
         this.listTreEm = this.treEmService.getListTreEm();
         setDataTable();
     }
